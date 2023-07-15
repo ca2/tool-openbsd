@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+sudo pkg install gtk4 cairo libidn libiconv openssl pango x11/libX11 x11/xinput libappindicator zip freeimage librsvg2-rust graphics/glew graphics/libosmesa devel/gconf2 audio/alsa-utils devel/libinotify devel/pcre2 x11/xcb multimedia/ffmpeg audio/mpg123
