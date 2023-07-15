@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-cp $HOME/cmake/operating_system/tool-freebsd/bin/_distro__desktop_environment_and_release
+cp $HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release
 
 patch_rc_file()
 {
@@ -29,13 +29,13 @@ patch_rc_file()
       echo "# ca2 patch_shell" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
-      echo "PATH=\$HOME/cmake/operating_system/tool-freebsd/bin:\$HOME/bin:\$PATH" >> $RC_FILE
+      echo "PATH=\$HOME/cmake/operating_system/tool-openbsd/bin:\$HOME/bin:\$PATH" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "export PATH" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
-      echo ". ./_distro__desktop_environment_and_release" >> $RC_FILE
+      echo ". \$HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "# end ca2 patch_shell + 4 new lines" >> $RC_FILE
@@ -73,13 +73,20 @@ patch_shrc()
 
 }
 
+patch_kshrc()
+{
 
-. $HOME/cmake/operating_system/tool-freebsd/bin/_distro__desktop_environment_and_release
+   patch_rc_file "$HOME/.kshrc"
+
+}
+
+
+. $HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release
 
 
 patch_profile
 patch_shrc
-
+patch_kshrc
 
 
 
