@@ -69,42 +69,25 @@ submodule()
                 echo "Processing $DIR..."
  
                 git fetch
-
-				
-                LIST_MAIN_BRANCH=$(git branch --list main)
-
-                if [ -n "$LIST_MAIN_BRANCH" ]; then
-
-                    git checkout main
-
-                else
-
-                    git checkout master
-
-                fi
-
+                git checkout basis
                 git pull
  
-                if [ -n "$LIST_MAIN_BRANCH" ]; then
-
-                        if [ -f .gitmodules ]; then
-        
-                                while read line; do
-        
-                                        trimmed_line=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${line}")
-        
-                                        if [[ $trimmed_line == $path_pattern ]]; then
-        
-                                                submodule_name=$(sed -e 's/^path\s*=\s*//'<<<"${line}")
-        
-                                                submodule ./$submodule_name
-        
-                                        fi
-        
-                                done < ./.gitmodules
-        
-                        fi
-
+                if [ -f .gitmodules ]; then
+ 
+                        while read line; do
+ 
+                                trimmed_line=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${line}")
+ 
+                                if [[ $trimmed_line == $path_pattern ]]; then
+ 
+                                        submodule_name=$(sed -e 's/^path\s*=\s*//'<<<"${line}")
+ 
+                                        submodule ./$submodule_name
+ 
+                                fi
+ 
+                        done < ./.gitmodules
+ 
                 fi
  
                 popd
