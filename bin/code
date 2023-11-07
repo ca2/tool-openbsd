@@ -1,0 +1,7 @@
+#!/bin/ksh
+
+
+ENABLE_WASM=1 chrome --enable-wasm --disable-unveil
+
+
+
