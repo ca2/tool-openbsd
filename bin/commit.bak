@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
  
 if [ -z "$1" ]; then
  
@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
                 BASEDIR=$(pwd)
  
                 DIR=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${DIR}")
-               
+ 
         else
  
                 if [ -f $HOME/current_working_directory.txt ]; then
@@ -68,46 +68,40 @@ submodule()
  
                 echo "Processing $DIR..."
  
-                git fetch
-
-				
-                LIST_MAIN_BRANCH=$(git branch --list main)
-
-                if [ -n "$LIST_MAIN_BRANCH" ]; then
-
-                    git checkout main
-
-                else
-
-                    git checkout master
-
-                fi
-
-                git pull
+                if [ -f .gitmodules ]; then
  
-                if [ -n "$LIST_MAIN_BRANCH" ]; then
+                        while read line; do
+ 
+                                trimmed_line=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${line}")
+ 
+                                if [[ $trimmed_line == $path_pattern ]]; then
+ 
+                                        submodule_name=$(sed -e 's/^path\s*=\s*//'<<<"${line}")
+ 
+                                        submodule ./$submodule_name
 
-                        if [ -f .gitmodules ]; then
-        
-                                while read line; do
-        
-                                        trimmed_line=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${line}")
-        
-                                        if [[ $trimmed_line == $path_pattern ]]; then
-        
-                                                submodule_name=$(sed -e 's/^path\s*=\s*//'<<<"${line}")
-        
-                                                submodule ./$submodule_name
-        
-                                        fi
-        
-                                done < ./.gitmodules
-        
-                        fi
-
+					git add $submodule_name
+ 
+                                fi
+ 
+                        done < ./.gitmodules
+ 
                 fi
  
                 popd
+ 
+#                git add -A .
+#                git commit -a -F$HOME/Desktop/dedicatory.txt
+#                git push
+
+		git add -A .
+		git update-index --refresh
+		commits=$(git diff-index HEAD)
+		if [ ! -z "$commits" ]; then
+			git commit -a -F$HOME/Desktop/dedicatory.txt
+		fi
+
+ 
  
         fi
  
@@ -115,7 +109,6 @@ submodule()
  
  
 submodule $BASEDIR
- 
  
  
  
