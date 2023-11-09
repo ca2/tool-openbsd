@@ -5,8 +5,12 @@ if [ -z "$1" ]; then
         if [ -d .git ]; then
  
                 BASEDIR=$(pwd)
+
+#		echo "BASEDIR=$BASEDIR"
  
                 DIR=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${DIR}")
+
+#		echo "DIR=$DIR"
                
         else
  
@@ -87,15 +91,25 @@ submodule()
  
                 if [ -n "$LIST_MAIN_BRANCH" ]; then
 
+#			echo "-n LIST_MAIN_BRANCH ($LIST_MAIN_BRANCH)"
+
                         if [ -f .gitmodules ]; then
+
+#				echo "-f .gitmodules"
         
                                 while read line; do
         
                                         trimmed_line=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]\\/]*$//'<<<"${line}")
+
+#					echo "trimmed_line=$trimmed_line"
         
                                         if [[ $trimmed_line == $path_pattern ]]; then
+
+#						echo "matched pattern for line $trimmed_line"
         
-                                                submodule_name=$(sed -e 's/^path\s*=\s*//'<<<"${line}")
+                                                submodule_name=$(sed -e 's/^path[[:space:]]*=[[:space:]]*//'<<<"${trimmed_line}")
+						
+#						echo "submodule_name ${submodule_name}"
         
                                                 submodule ./$submodule_name
         
@@ -112,7 +126,7 @@ submodule()
         fi
  
 }
- 
+
  
 submodule $BASEDIR
  

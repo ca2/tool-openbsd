@@ -1,0 +1,3 @@
+#!/bin/ksh
+
+sudo pkg_add bash sed
