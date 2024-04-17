@@ -38,6 +38,9 @@ patch_rc_file()
       echo ". \$HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
+      echo ". _defer_ssh_agent" >> $RC_FILE
+      echo "" >> $RC_FILE
+      echo "" >> $RC_FILE
       echo "# end ca2 patch_shell + 4 new lines" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE

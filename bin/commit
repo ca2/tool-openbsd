@@ -76,11 +76,13 @@ submodule()
  
                                 if [[ $trimmed_line == $path_pattern ]]; then
  
-                                        submodule_name=$(sed -e 's/^path[[:space:]]*=\[[:space:]]//'<<<"${line}")
- 
-                                        submodule ./$submodule_name
+                                        submodule_name=$(sed -e 's/^path[[:space:]]*=[[:space:]]*//'<<<"${line}")
 
-                           	        echo 'Adding submodule $submodule_name.'; git add $submodule_name
+                                        submodule ./$submodule_name
+ 
+                           	        echo "Adding submodule $submodule_name."
+
+					git add $submodule_name
  
                                 fi
  
