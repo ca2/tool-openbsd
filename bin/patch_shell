@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-cp $HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release
+cp $HOME/cmake/operating_system/tool-openbsd/bin/_operating_system
 
 patch_rc_file()
 {
@@ -35,7 +35,7 @@ patch_rc_file()
       echo "export PATH" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
-      echo ". \$HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release" >> $RC_FILE
+      echo ". \$HOME/cmake/operating_system/tool-openbsd/bin/_operating_system" >> $RC_FILE
       echo "" >> $RC_FILE
       echo "" >> $RC_FILE
       echo ". _defer_ssh_agent" >> $RC_FILE
@@ -84,7 +84,7 @@ patch_kshrc()
 }
 
 
-. $HOME/cmake/operating_system/tool-openbsd/bin/_distro__desktop_environment_and_release
+. $HOME/cmake/operating_system/tool-openbsd/bin/_operating_system
 
 
 patch_profile

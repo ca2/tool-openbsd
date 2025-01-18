@@ -1,0 +1,7 @@
+#!/bin/ksh
+
+
+ARCHITECTURE=`eval uname -m`
+
+
+__operating_system_$ARCHITECTURE

@@ -1,0 +1,7 @@
+#!/bin/ksh
+
+
+ARCHITECTURE=`eval uname -m`
+
+
+application_build_helper_$ARCHITECTURE "$@"

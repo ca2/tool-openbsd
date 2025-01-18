@@ -1,0 +1,4 @@
+
+
+
+sudo pkg_add cmake pkgconf ninja libidn ffmpeg motif zip freeimage
