@@ -4,9 +4,11 @@
 ninja -j 3 "$@"
 
 if [ $? != 0 ]; then
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_build_failed.wav
-else
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_good_build.wav
 
+	aucat -i ~/dropbox/box/audio/sysevent/cpp_build_failed.wav &
+
+else
+
+	aucat -i ~/dropbox/box/audio/sysevent/cpp_good_build.wav &
 
 fi

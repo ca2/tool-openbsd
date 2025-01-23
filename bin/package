@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+
+application_build_helper --package
+
+
+
+
