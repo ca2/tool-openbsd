@@ -1,5 +1,15 @@
-#!/bin/sh
+#!/bin/ksh
 
-eval $(ssh-agent -s) > /dev/null
-ssh-add ~/.ssh/id_auth &> /dev/null
-ssh-add ~/.ssh/id_sign &> /dev/null
+
+if [ -z "$SSH_AUTH_SOCK"]; then
+
+
+   eval $(ssh-agent -s) > /dev/null
+
+   ssh-add ~/.ssh/id_auth > /dev/null
+
+fi
+
+
+
+

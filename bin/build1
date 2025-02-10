@@ -1,14 +1,21 @@
 #!/bin/ksh
 
+if [ -z "$1" ]; then
 
-ninja -j 3 "$@"
-
-if [ $? != 0 ]; then
-
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_build_failed.wav &
+   ninja -j 3 release_all
 
 else
 
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_good_build.wav &
+   ninja -j 3 "$@"
+
+fi
+
+if [ $? != 0 ]; then
+
+   aucat -i ~/code/operating_system/tool/audio/cpp_build_failed.wav &
+
+else
+
+   aucat -i ~/code/operating_system/tool/audio/cpp_good_build.wav &
 
 fi

@@ -4,9 +4,15 @@
 cmake -B . -S .. -G Ninja -DCMAKE_BUILD_TYPE=Release "$@"
 
 if [ $? != 0 ]; then
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_build_failed.wav
-else
-	aucat -i ~/dropbox/box/audio/sysevent/cpp_good_build.wav
 
+   aucat -i ~/code/operating_system/tool/audio/cpp_build_failed.wav &
+
+else
+
+   aucat -i ~/code/operating_system/tool/audio/cpp_good_build.wav &
 
 fi
+
+
+
+

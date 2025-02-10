@@ -27,20 +27,20 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-PATH="/archive/tool/bin:$PATH"
+#PATH="/archive/tool/bin:$PATH"
 
 
-export TIME_NAME="time"
+#export TIME_NAME="time"
 
 
 # "strategic micro update"
-svn update /archive/tool/bin/
+#svn update /archive/tool/bin/
 
 
-sleep 1s
+#sleep 1s
 
 
-watch_build &
+#watch_build &
 
 
 
