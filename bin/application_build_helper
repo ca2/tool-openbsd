@@ -4,4 +4,4 @@
 ARCHITECTURE=`eval uname -m`
 
 
-application_build_helper_$ARCHITECTURE "$@"
+$HOME/code/operating_system/tool/bin/application_build_helper_$ARCHITECTURE "$@"

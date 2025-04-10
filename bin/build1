@@ -1,12 +1,28 @@
 #!/bin/ksh
 
-if [ -z "$1" ]; then
 
-   ninja -j 3 release_all
+CPU_COUNT=`sysctl -n hw.ncpu`
+
+if [[ $CPU_COUNT -le 4 ]]; then
+
+	THREAD_COUNT=$(($CPU_COUNT-1))
 
 else
 
-   ninja -j 3 "$@"
+	THREAD_COUNT=$(($CPU_COUNT-2))
+
+fi
+
+echo "CPU_COUNT is $CPU_COUNT"
+echo "THREAD_COUNT $THREAD_COUNT will be used to build"
+
+if [ -z "$1" ]; then
+
+   ninja -j $THREAD_COUNT release_all
+
+else
+
+   ninja -j $THREAD_COUNT "$@"
 
 fi
 
