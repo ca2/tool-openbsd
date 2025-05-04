@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+mkdir /nfs/$1
+cp -Rf /home/camilo/store/openbsd/* /nfs/$1/
+
+
+
+
+
