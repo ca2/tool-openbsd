@@ -1,4 +1,5 @@
 
 
 
-sudo pkg_add cmake pkgconf ninja libidn ffmpeg motif zip freeimage glew glm
+sudo pkg_add cmake ninja libidn ffmpeg motif zip freeimage glew glm
+
