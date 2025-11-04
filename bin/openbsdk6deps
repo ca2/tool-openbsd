@@ -1,0 +1,5 @@
+#!/bin/ksh
+
+
+sudo pkg_add cmake ninja libidn ffmpeg motif zip freeimage glew glm kf6-extra-cmake-modules kde-development kde-dev-utils kf6-kstatusnotifieritem
+
