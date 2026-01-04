@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-sudo pkg_add bash cmake ninja pkgconf
+sudo pkg_add bash cmake ninja
 
 
 
