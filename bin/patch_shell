@@ -2,7 +2,7 @@
 
 ARCHITECTURE=`eval uname -m`
 
-$HOME/code/operating_system/tool/bin/application_build_helper_$ARCHITECTURE --patch-shell
+$HOME/code/operating_system/tool/bin/$ARCHITECTURE/application_build_helper --patch-shell
 
 
 
